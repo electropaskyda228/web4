@@ -1,0 +1,77 @@
+<table style="width: 100%; border-collapse: collapse;">
+    <tr>
+      <td style="width: 50%; padding: 10px;">
+        <form [formGroup]="coordsForm" novalidate (ngSubmit)="submit()">
+          <div>
+            <label>Coord X (-3; 3)</label>
+            <input name="x" formControlName="xField" />
+  
+            @if(coordsForm.controls["xField"].invalid && coordsForm.controls["xField"].touched) {
+              <div class="alert">Incorrect value of coordinate x</div>
+            }
+          </div>
+  
+          <div>
+            <label>Coord Y (-5; 3)</label>
+            <input name="y" formControlName="yField" />
+  
+            @if(coordsForm.controls["yField"].invalid && coordsForm.controls["yField"].touched) {
+              <div class="alert">Incorrect value of coordinate y</div>
+            }
+          </div>
+  
+          <div>
+            <label>Radius [0; 3)</label>
+            <input name="radius" formControlName="radius" (ngModelChange)="updateRadius()"/>
+  
+            @if(coordsForm.controls["radius"].invalid && coordsForm.controls["radius"].touched) {
+              <div class="alert">Incorrect value of radius</div>
+            }
+          </div>
+  
+          <button [disabled]="coordsForm.invalid">Метнуть</button>
+        </form>
+        <button (click)="logout()">Выйти</button>
+      </td>
+      <td style="width: 50%; padding: 10px;">
+        <graph (sendData)="updateDataCanvas($event)" [koeff]="radius"></graph>
+      </td>
+    </tr>
+  
+     <tr>
+      <td colspan="2" style="text-align: center; padding: 10px;">
+        <h2 class="coord-list-title">Список координат</h2>
+        <p-table [value]="coords" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="x">
+                <i class="pi pi-sort-alt"></i> X
+              </th>
+              <th pSortableColumn="y">
+                <i class="pi pi-sort-alt"></i> Y
+              </th>
+              <th pSortableColumn="r">
+                <i class="pi pi-sort-alt"></i> R
+              </th>
+              <th pSortableColumn="result">
+                <i class="pi pi-sort-alt"></i> Result
+              </th>
+              <th pSortableColumn="userName">
+                <i class="pi pi-sort-alt"></i> User
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-coord>
+            <tr>
+              <td>{{ coord.x }}</td>
+              <td>{{ coord.y }}</td>
+              <td>{{ coord.r }}</td>
+              <td>{{ coord.result }}</td>
+              <td>{{ coord.userName }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </td>
+    </tr>
+  </table>

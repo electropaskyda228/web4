@@ -1,0 +1,13 @@
+<div style="position: relative; top: -140px;">
+  <svg [style.width]="width" [style.height]="height" style="position: absolute; top: 0; left: 0;">
+    <rect [style.width]="radius" [style.height]="radius" [style.x]="width / 2 - radius" [style.y]="height / 2 - radius" fill="red" id="rect_field"/>
+    <polygon [attr.points]="trianglePoints" fill="red" id="triangle_field"/>
+    <polygon [attr.points]="triangleCirclePoints" fill="red" stroke="red" id="triangle_cycle_field"/>
+    <path [attr.d]="circlePoints" fill="red" stroke="red" id="cycle_field"/>
+    <line [attr.x1]="width / 2" [attr.x2]="width / 2" y1="0" [attr.y2]="height" stroke="white"/>
+    <polygon [attr.points]="arrowTop" fill="white"/>
+    <line x1="0" [attr.y1]="height / 2" [attr.x2]="width" [attr.y2]="height / 2" stroke="white"/>
+    <polygon [attr.points]="arrowRight" fill="white"/>
+  </svg>
+  <canvas #graphCanvas id="canvas" [attr.width]="width" [attr.height]="height" style="position: absolute; top: 0; left: 0; z-index: 10;" (click)="onCanvasClick($event)"></canvas>
+</div>

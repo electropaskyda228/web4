@@ -1,0 +1,10 @@
+com\electropaskyda\web5\CorsConfig.class
+com\electropaskyda\web5\Points\PointService.class
+com\electropaskyda\web5\Points\PointRepository.class
+com\electropaskyda\web5\Users\UserService.class
+com\electropaskyda\web5\Users\User.class
+com\electropaskyda\web5\Web5Application.class
+com\electropaskyda\web5\Users\UserRepository.class
+com\electropaskyda\web5\Users\UserController.class
+com\electropaskyda\web5\Points\Point.class
+com\electropaskyda\web5\Points\PointController.class

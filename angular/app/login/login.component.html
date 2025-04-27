@@ -1,0 +1,25 @@
+<div class="header">
+    <h1>ФИО: Юдин Георгий Дмитриевич</h1>
+    <h2>Группа: P3213</h2>
+    <h2>Вариант: 778</h2>
+  </div>
+  
+  <form [formGroup]="userForm" novalidate (ngSubmit)="submit()" class="form-container">
+    <div class="form-group">
+      <label for="userName">Username</label>
+      <input id="userName" name="userName" formControlName="userName" class="form-input" />
+      @if(userForm.controls["userName"].invalid && userForm.controls["userName"].touched) {
+        <div class="alert">Incorrect value of username</div>
+      }
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" name="password" formControlName="password" type="password" class="form-input" />
+      @if(userForm.controls["password"].invalid && userForm.controls["password"].touched) {
+        <div class="alert">Incorrect value of password</div>
+      }
+    </div>
+  
+    <button type="submit" [disabled]="userForm.invalid" class="submit-button">Войти / зарегистрироваться</button>
+  </form>
